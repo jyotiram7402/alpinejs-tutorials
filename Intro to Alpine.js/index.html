@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <!-- This is the simplest and easiest way to include Alpine.js in your script. 
+       This is ideal for small projects or experimental projects. -->
+  <script
+    defer
+    src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+  ></script>
+
+  <body>
+    <!-- Alpine.js initializes a component using `x-data`. 
+         Here, we define a reactive state object containing a `message` variable. -->
+    <h1 x-data="{ message: 'I ❤️ to learn new things' }" x-text="message"></h1>
+    <!-- `x-text` binds the value of `message` to this element's text content. 
+             When `message` changes, the displayed text updates automatically. 
+             x-text="message"> -->
+  </body>
+</html>
