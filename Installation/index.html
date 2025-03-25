@@ -1,0 +1,35 @@
+<!-- There is 2 ways to include Alpine js into your code-->
+
+<!-- Way 1- From a script tag-->
+
+<!-- 
+<html>
+    <head>
+        ...
+ 
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    </head>
+    ...
+</html>
+
+-->
+
+<!-- Way 2- As a module-->
+
+<!-- 
+
+If you prefer the more robust approach, you can install Alpine via NPM and import it into a bundle.
+
+Run the following command to install it.
+
+            npm install alpinejs
+
+Now import Alpine into your bundle and initialize it like so:
+
+            import Alpine from 'alpinejs'
+            
+            window.Alpine = Alpine
+            
+            Alpine.start()
+            
+-->
