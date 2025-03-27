@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alpine.js State Example</title>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+  </head>
+  <body>
+    <div x-data="{ count: 0 }">
+      <h2 x-text="count"></h2>
+      <button @click="count++">Increase</button>
+      <button @click="count--">Decrease</button>
+    </div>
+  </body>
+</html>
+
+<!-- How it works?
+
+x-data="{ count: 0 }" → Defines a reactive state variable (count).
+
+x-text="count" → Displays the current value of count dynamically.
+
+@click="count++" → Increments the state when the button is clicked.
+
+@click="count--" → Decrements the state when the button is clicked. -->
