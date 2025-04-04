@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alpine.js Magic Properties Explained</title>
+    <script
+      defer
+      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+  </head>
+  <body>
+    <!--
+    Alpine.js Magic Properties Documentation
+
+    1. $el
+    - References the current DOM element the Alpine component is attached to.
+  -->
+    <div x-data x-init="console.log($el)">$el example (check console)</div>
+
+    <!--
+    2. $refs
+    - Provides access to elements inside the component marked with x-ref.
+  -->
+    <div x-data="{ showRef() { console.log($refs.myRef.textContent) } }">
+      <span x-ref="myRef">Hello Ref</span>
+      <button @click="showRef">Show Ref</button>
+    </div>
+
+    <!--
+    3. $store
+    - Gives access to Alpine's global store, useful for global state management.
+  -->
+    <script>
+      document.addEventListener("alpine:init", () => {
+        Alpine.store("user", { name: "John Doe" });
+      });
+    </script>
+    <div x-data>
+      <p>User Name: <span x-text="$store.user.name"></span></p>
+    </div>
+
+    <!--
+    4. $watch
+    - Allows watching changes on a data property.
+  -->
+    <div
+      x-data="{ count: 0 }"
+      x-init="$watch('count', value => console.log('Count changed to', value))"
+    >
+      <button @click="count++">Increment</button>
+      <p x-text="count"></p>
+    </div>
+
+    <!--
+    5. $dispatch
+    - Dispatches custom events that can be listened to in parent components.
+  -->
+    <div
+      x-data="{ send() { $dispatch('custom-event', { detail: 'Hello from child' }) } }"
+    >
+      <button @click="send">Dispatch Event</button>
+    </div>
+
+    <div @custom-event.window="console.log($event.detail)">
+      Listening to custom-event (check console)
+    </div>
+
+    <!--
+    6. $nextTick
+    - Waits until the DOM is updated before executing code.
+  -->
+    <div
+      x-data="{ message: '', update() { this.message = 'Updated'; $nextTick(() => console.log($el.textContent)) } }"
+    >
+      <button @click="update">Update Message</button>
+      <p x-text="message"></p>
+    </div>
+
+    <!--
+    7. $root
+    - Refers to the root component element in nested Alpine components.
+  -->
+    <div x-data="{ name: 'Parent' }">
+      <div x-data="{ showRoot() { console.log($root) } }">
+        <button @click="showRoot">Show Root (Check Console)</button>
+      </div>
+    </div>
+
+    <!--
+    8. $data
+    - Provides access to the raw data object of the component.
+  -->
+    <div x-data="{ counter: 5, showData() { console.log($data) } }">
+      <button @click="showData">Show Data</button>
+    </div>
+
+    <!--
+    9. $id
+    - Used for generating unique IDs for elements in a component (usually with x-bind:id).
+  -->
+    <div x-data>
+      <label :for="$id('input')">Label</label>
+      <input type="text" :id="$id('input')" />
+    </div>
+  </body>
+</html>
